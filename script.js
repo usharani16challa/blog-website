@@ -1,20 +1,28 @@
-const blogs = [];
-
-function submitBlog(event) {
-    event.preventDefault();
-
-    const title = document.getElementById("title").value;
-    const content = document.getElementById("content").value;
-
-    if (title.trim() === "" || content.trim() === "") {
-        alert("Please fill all fields.");
-        return;
+const blogs = [
+    {
+        title: "Importance of Reading",
+        content: "Reading books improves knowledge, vocabulary, and creativity."
+    },
+    {
+        title: "Morning Exercise",
+        content: "Daily exercise keeps the body healthy and the mind fresh."
     }
+];
 
-    blogs.push({ title, content });
+const container = document.getElementById("blogContainer");
 
-    alert("Blog Added Successfully!");
+blogs.forEach(blog => {
+    const card = document.createElement("div");
+    card.innerHTML = `
+        <h2>${blog.title}</h2>
+        <p>${blog.content}</p>
+        <hr>
+    `;
+    container.appendChild(card);
+});
 
-    document.getElementById("title").value = "";
-    document.getElementById("content").value = "";
+function submitBlog(event){
+    event.preventDefault();
+    
+alert("Blog Added Successfully");
 }
