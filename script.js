@@ -1,13 +1,20 @@
+const blogs = [];
+
 function submitBlog(event) {
     event.preventDefault();
 
-    let title = document.getElementById("title").value;
-    let content = document.getElementById("content").value;
+    const title = document.getElementById("title").value;
+    const content = document.getElementById("content").value;
 
-    if (title === "" || content === "") {
-        alert("Please fill in all fields.");
+    if (title.trim() === "" || content.trim() === "") {
+        alert("Please fill all fields.");
         return;
     }
 
-    alert("Blog submitted successfully!");
+    blogs.push({ title, content });
+
+    alert("Blog Added Successfully!");
+
+    document.getElementById("title").value = "";
+    document.getElementById("content").value = "";
 }
