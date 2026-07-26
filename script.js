@@ -28,12 +28,29 @@ function displayBlogs() {
         container.appendChild(card);
     });
 }
-function submitBlog(event){
-    event.preventDefault();
-    
-    alert("Blog Added Successfully");
-   }
 
+function submitBlog(event) {
+    event.preventDefault();
+
+    const title = document.getElementById("title").value;
+    const content = document.getElementById("content").value;
+
+    if (title.trim() === "" || content.trim() === "") {
+        alert("Please fill all fields.");
+        return;
+    }
+
+    blogs.push({ title, content });
+
+    localStorage.setItem("blogs", JSON.stringify(blogs));
+
+    alert("Blog Added Successfully!");
+
+    document.getElementById("title").value = "";
+    document.getElementById("content").value = "";
+
+    displayBlogs();
+}
 
 function deleteBlog(index) {
     blogs.splice(index, 1);
