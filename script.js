@@ -45,6 +45,8 @@ function submitBlog(event) {
     document.getElementById("title").value = "";
     document.getElementById("content").value = "";
 
+    window.location.href="index.html";
+
     displayBlogs();
 }
 
@@ -60,6 +62,7 @@ function deleteBlog(index) {
 
 function editBlog(index) {
     let newTitle = prompt("Enter new title", blogs[index].title);
+    let newCategory = prompt("Enter new title", blogs[index].category);
     let newContent = prompt("Enter new content", blogs[index].content);
 
     if (newTitle && newContent) {
