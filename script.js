@@ -20,6 +20,16 @@ function displayBlogs(blogList = blogs) {
     });
 }
 
+function sortBlogs() {
+    blogs.sort((a, b) => a.title.localeCompare(b.title));
+
+    localStorage.setItem("blogs", JSON.stringify(blogs));
+
+    displayBlogs();
+
+    alert("Blogs sorted successfully!");
+}
+
 function submitBlog(event) {
     event.preventDefault();
 
