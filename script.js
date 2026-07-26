@@ -1,30 +1,20 @@
-let blogs = [
-    {
-        title: "Importance of Reading",
-        content: "Reading books improves knowledge, vocabulary, and creativity."
-    },
-    {
-        title: "Morning Exercise",
-        content: "Daily exercise keeps the body healthy and the mind fresh."
-    }
-];
+let blogs = JSON.parse(localStorage.getItem("blogs")) || [];
 
-function displayBlogs() {
+function displayBlogs(blogList = blogs) {
     const container = document.getElementById("blogContainer");
     container.innerHTML = "";
 
-    blogs.forEach((blog, index) => {
+    blogList.forEach((blog, index) => {
         const card = document.createElement("div");
-
         card.innerHTML = `
             <h2>${blog.title}</h2>
             <p>${blog.content}</p>
 
             <button onclick="editBlog(${index})">Edit</button>
             <button onclick="deleteBlog(${index})">Delete</button>
+
             <hr>
         `;
-
         container.appendChild(card);
     });
 }
@@ -40,7 +30,10 @@ function submitBlog(event) {
         return;
     }
 
-    blogs.push({ title, content });
+    blogs.push({
+        title: title,
+        content: content
+    });
 
     localStorage.setItem("blogs", JSON.stringify(blogs));
 
@@ -54,26 +47,34 @@ function submitBlog(event) {
 
 function deleteBlog(index) {
     blogs.splice(index, 1);
-    alert("Blog deleted successfully!");
+
+    localStorage.setItem("blogs", JSON.stringify(blogs));
+
+    alert("Blog Deleted Successfully!");
+
     displayBlogs();
 }
 
 function editBlog(index) {
-    let newTitle = prompt("Enter new blog title:", blogs[index].title);
-    let newContent = prompt("Enter new blog content:", blogs[index].content);
+    let newTitle = prompt("Enter new title", blogs[index].title);
+    let newContent = prompt("Enter new content", blogs[index].content);
 
     if (newTitle && newContent) {
         blogs[index].title = newTitle;
         blogs[index].content = newContent;
-        alert("Blog updated successfully!");
+
+        localStorage.setItem("blogs", JSON.stringify(blogs));
+
+        alert("Blog Updated Successfully!");
+
         displayBlogs();
     }
 }
 
 function searchBlogs() {
-    const keyword = document.getElementById("searchInput").value.toLowerCase();
+    let keyword = document.getElementById("searchInput").value.toLowerCase();
 
-    const filteredBlogs = blogs.filter(blog =>
+    let filteredBlogs = blogs.filter(blog =>
         blog.title.toLowerCase().includes(keyword)
     );
 
