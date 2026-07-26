@@ -81,4 +81,13 @@ function searchBlogs() {
     displayBlogs(filteredBlogs);
 }
 
+function clearBlogs() {
+    if (confirm("Are you sure you want to delete all blogs?")) {
+        blogs = [];
+        localStorage.removeItem("blogs");
+        displayBlogs();
+        alert("All blogs deleted successfully!");
+    }
+}
+
 displayBlogs();

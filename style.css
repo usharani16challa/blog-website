@@ -39,12 +39,18 @@ input, textarea{
     margin-top: 5px;
 }
 
-button{
-    background: blue;
+button {
+    background-color: #007BFF;
     color: white;
-    padding: 10px 20px;
     border: none;
+    padding: 10px 15px;
+    margin: 5px;
     cursor: pointer;
+    border-radius: 5px;
+}
+
+button:hover {
+    background-color: #0056b3;
 }
 
 #blogContainer {
