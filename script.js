@@ -18,6 +18,8 @@ function displayBlogs(blogList = blogs) {
         `;
         container.appendChild(card);
     });
+
+    updateStats();
 }
 
 function filterBlogs() {
@@ -122,5 +124,13 @@ function clearBlogs() {
         alert("All blogs deleted successfully!");
     }
 }
+
+function updateStats() {
+    document.getElementById("totalBlogs").textContent = blogs.length;
+
+    const categories = [...new Set(blogs.map(blog => blog.category))];
+    document.getElementById("totalCategories").textContent = categories.length;
+}
+
 
 displayBlogs();

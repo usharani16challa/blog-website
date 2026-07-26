@@ -16,25 +16,17 @@
 <h2>My Blog Website</h2>
 
 <button onclick="clearBlogs()">Clear All Blogs</button>
-
-<input type="text" id="searchinput" placeholder="Search blogs....."  onkeyup="searchBlogs()">
-
 <label for="category">Category</label><br>
 <input type="text" id="title">
-
 <select id="category">
     <option value="Technology">Technology</option>
     <option value="Education">Education</option>
     <option value="Health">Health</option>
     <option value="Travel">Travel</option>
 </select>
-
 <textarea id="content"></textarea>
-
 <br><br>
-
 <button onclick="sortBlogs()">Sort A-Z</button>
-
 <select id="filterCategory" onchange="filterBlogs()">
     <option value="All">All Categories</option>
     <option value="Technology">Technology</option>
@@ -42,6 +34,11 @@
     <option value="Health">Health</option>
     <option value="Travel">Travel</option>
 </select>
+
+<div id="stats">
+    <h3>Total Blogs: <span id="totalBlogs">0</span></h3>
+    <h3>Total Categories: <span id="totalCategories">0</span></h3>
+</div>
 
 <input type="text" id="searchInput" placeholder="Search Blog..." onkeyup="searchBlogs()">
 
