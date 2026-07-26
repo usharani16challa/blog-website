@@ -20,6 +20,22 @@ function displayBlogs(blogList = blogs) {
     });
 }
 
+function filterBlogs() {
+    const selectedCategory = document.getElementById("filterCategory").value;
+
+    if (selectedCategory === "All") {
+        displayBlogs();
+        return;
+    }
+
+    const filteredBlogs = blogs.filter(blog =>
+        blog.category === selectedCategory
+    );
+
+    displayBlogs(filteredBlogs);
+}
+
+
 function sortBlogs() {
     blogs.sort((a, b) => a.title.localeCompare(b.title));
 
