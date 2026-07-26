@@ -53,4 +53,14 @@ function editBlog(index) {
     }
 }
 
+function searchBlogs() {
+    const keyword = document.getElementById("searchInput").value.toLowerCase();
+
+    const filteredBlogs = blogs.filter(blog =>
+        blog.title.toLowerCase().includes(keyword)
+    );
+
+    displayBlogs(filteredBlogs);
+}
+
 displayBlogs();
