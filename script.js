@@ -8,6 +8,7 @@ function displayBlogs(blogList = blogs) {
         const card = document.createElement("div");
         card.innerHTML = `
             <h2>${blog.title}</h2>
+            <h4>Category:${blog.category}</h4>
             <p>${blog.content}</p>
 
             <button onclick="editBlog(${index})">Edit</button>
@@ -24,6 +25,7 @@ function submitBlog(event) {
 
     const title = document.getElementById("title").value;
     const content = document.getElementById("content").value;
+    const category=document.getElementById("category").value;
 
     if (title.trim() === "" || content.trim() === "") {
         alert("Please fill all fields.");
@@ -32,6 +34,7 @@ function submitBlog(event) {
 
     blogs.push({
         title: title,
+        category:category,
         content: content
     });
 
@@ -61,6 +64,7 @@ function editBlog(index) {
 
     if (newTitle && newContent) {
         blogs[index].title = newTitle;
+        blogs[index].category=newCategory;
         blogs[index].content = newContent;
 
         localStorage.setItem("blogs", JSON.stringify(blogs));
